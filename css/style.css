@@ -1,0 +1,789 @@
+:root {
+  --soda-bg: #f5fcf9;    /* ほぼ白に近い、ごく薄いミント（清潔感のある病室） */
+  --soda-main: #c6f5e1;  /* クリームソーダの薄い緑 */
+  --soda-accent: #44cebe;/* 薬や目の発光 */
+  --gold-kintsugi: #c3a551; /* 金継ぎ：細くて上品な金 */
+  --text-main: #34495e;  /* 文字は少し抜けた黒 */
+  --error-fluid: #1a1a1a;/* 顔から出る黒い液体用 */
+}
+
+/* --- bodyの修正 --- */
+/* --- bodyの修正：背景画像とカーソル設定を削除 --- */
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: "WDXL Lubrifont JP N", sans-serif;
+
+  background-attachment: fixed; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  cursor: auto; /* 通常のカーソルに戻す */
+}
+
+
+/* --- メインコンテナの修正 --- */
+.interface-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  background: rgba(255, 255, 255, 0.9);
+
+  /* flex-growでコンテンツが少なくてもフッターを最下部に押し下げる */
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+position: relative;
+}
+
+
+/* 全体のノイズ（より細かく、繊細に） */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 20%, var(--soda-bg) 150%),
+              url('https://grainy-gradients.vercel.app/noise.svg'); /* 微細なノイズ */
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 100;
+}
+
+
+
+/* ヘッダー：情報の断片化 */
+header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.system-status {
+  font-size: 10px;
+  color: var(--gold-kintsugi);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--text-main);
+}
+
+/* セクション：植物が侵食しているような繊細な装飾 */
+h2 {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--soda-accent);
+  border-left: 4px solid var(--soda-main);
+  padding: 2px 12px;
+  margin-bottom: 25px;
+}
+
+.content-text {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--text-main);
+  border-left: 1px solid #eee;
+  padding-left: 20px;
+}
+
+/* ナビゲーション：ウィンドウの重なりをイメージ */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 80px;
+}
+
+.nav-item {
+  position: relative;
+  padding: 40px 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+/* ホバー時に「黒い液体」が少しだけ滲む演出 */
+.nav-item:hover {
+  border-color: var(--error-fluid);
+  transform: translateY(-2px);
+  box-shadow: 10px 10px 0 var(--soda-main);
+}
+
+.label-en {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+
+.label-jp {
+  font-size: 0.65rem;
+  color: #999;
+}
+
+
+/* フッター全体のコンテナ */
+/* フッター全体のコンテナ */
+.soda-footer {
+  overflow: hidden;
+  position: relative;
+  margin-top: auto;
+  padding: 180px 0 40px; /* 上側に波のスペースを確保 */
+  background: transparent; /* 背景の四角をなしに */
+}
+
+/* ソーダの波（提供されたコード） */
+.shapedividers_com-9187::before { 
+  content: '';
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  bottom: -0.1vw;
+  left: -0.1vw;
+  right: -0.1vw;
+  top: -0.1vw; 
+  background-size: 100% 120px;
+  background-position: 50% 100%; 
+  background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.28 2.17" preserveAspectRatio="none"><path d="M35.28 1.67c-3.07-.55-9.27.41-16.15 0-6.87-.4-13.74-.58-19.13.1v.4h35.28z" fill="%2349cebf"/><path d="M35.28 1.16c-3.17-.8-7.3.4-10.04.56-2.76.17-9.25-1.47-12.68-1.3-3.42.16-4.64.84-7.04.86C3.12 1.31 0 .4 0 .4v1.77h35.28z" opacity=".5" fill="%2349cebf"/><path d="M35.28.31c-2.57.84-7.68.3-11.8.43-4.1.12-6.85.61-9.57.28C11.18.69 8.3-.16 5.3.02 2.3.22.57.85 0 .87v1.2h35.28z" opacity=".5" fill="%2349cebf"/></svg>'); 
+}
+
+/* テキスト部分：中央揃え & 背景なし */
+.footer-inner {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center;    /* 中央揃え */
+  gap: 8px;               /* 文字の間隔 */
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #fff; /* 文字色はメインカラーに合わせて落ち着かせる */
+  opacity: 0.6;           /* 少し透けさせて儚い感じに */
+}
+
+.footer-serial {
+  font-family: monospace; /* シリアル値っぽさを出す */
+}
+
+/* メディアクエリ：波のサイズ微調整 */
+@media (min-width:2100px){
+  .shapedividers_com-9187::before{
+    background-size: 100% calc(2vw + 120px);
+  }
+} 
+
+/* 浮遊ファイル */
+#floating-file {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1000;
+  filter: drop-shadow(0 0 5px var(--soda-main));
+}
+
+/* 隠しウィンドウ */
+#secret-window {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  width: 250px;
+  background: white;
+  border: 1px solid var(--gold-kintsugi);
+  box-shadow: 10px 10px 0 var(--soda-main);
+  display: none;
+  z-index: 1001;
+}
+
+#window-header {
+  background: var(--gold-kintsugi);
+  color: white;
+  padding: 5px 10px;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: move;
+}
+
+.window-content {
+  padding: 15px;
+  font-size: 12px;
+  color: var(--text-main);
+}
+
+
+
+/* バグ（馬鹿）モード：文字が顔文字化 */
+.baka-mode {
+  filter: invert(1) hue-rotate(180deg) !important; /* 色反転 */
+  background-color: #000 !important;
+}
+
+.baka-mode * {
+  font-family: "Courier New", monospace !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ウィンドウをページ上の絶対位置に配置できるようにする */
+#secret-window {
+  position: absolute; /* fixedから変更 */
+  width: 280px;
+  background: white;
+  border: 1px solid var(--gold-kintsugi);
+  box-shadow: 10px 10px 0 var(--soda-main);
+  display: none;
+  z-index: 1001;
+  cursor: default;
+}
+
+#window-header {
+  background: var(--gold-kintsugi);
+  color: white;
+  padding: 8px 12px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  cursor: grab; /* 掴める感 */
+  user-select: none;
+}
+
+#window-header:active {
+  cursor: grabbing;
+}
+
+#close-btn {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+#close-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ローディング画面全体 */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #f5fcf9; /* 本体背景と同じ色 */
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
+}
+
+.loader-content {
+  text-align: center;
+  font-family: "WDXL Lubrifont JP N", sans-serif;
+}
+
+/* なると画像のスタイル */
+.naruto-img {
+  width: 80px;      /* サイズはお好みで */
+  height: auto;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: spin 1.2s linear infinite; /* 1.2秒で1回転 */
+  filter: drop-shadow(0 0 5px rgba(46, 204, 113, 0.2)); /* ほんのりソーダ色に光らせる */
+}
+
+/* 回転アニメーション（以前と同じ） */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.loading-text {
+  font-size: 14px;
+  color: var(--soda-accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+}
+
+.loading-status {
+  font-size: 10px;
+  color: #999;
+}
+
+/* 読み込み完了後に消すためのクラス */
+.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* パンくずリスト（追加） */
+.breadcrumb {
+  font-size: 11px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  color: #999;
+}
+.breadcrumb a {
+  color: var(--soda-accent);
+  text-decoration: none;
+}
+
+/* 記録グリッド（提供されたworks-gridを今のトーンに） */
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.record-card {
+  background: rgba(255, 255, 255, 0.5); /* 白背景に馴染ませる */
+  border: 1px solid rgba(46, 204, 113, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.record-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--soda-accent);
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.1);
+}
+
+.record-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(46, 204, 113, 0.1);
+}
+
+.no-image {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #ccc;
+}
+
+.record-info {
+  padding: 20px;
+}
+
+.record-type {
+  font-size: 9px;
+  color: var(--soda-accent);
+  font-weight: bold;
+}
+
+.record-title {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  font-weight: normal;
+}
+
+.record-desc {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.record-link {
+  display: inline-block;
+  padding: 6px 15px;
+  background: var(--soda-accent);
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  transition: 0.2s;
+}
+
+.record-link:hover {
+  background: #27ae60;
+  padding-left: 20px; /* 少し伸びる動き */
+}
+
+
+
+
+.detail-window {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 5px solid var(--soda-accent);
+  padding: 40px;
+  animation: data-reveal 0.5s ease-out; /* ふわっと出す */
+}
+
+@keyframes data-reveal {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.detail-body {
+  font-size: 14px;
+  line-height: 2;
+  color: #444;
+  white-space: pre-wrap; /* 改行を有効にする */
+  letter-spacing: 0.05em;
+}
+
+#detail-sync {
+  font-family: monospace;
+  color: var(--soda-accent);
+  margin-bottom: 10px;
+}
+
+
+
+
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  align-items: start;
+}
+
+#log-detail {
+  grid-column: 1 / -1; 
+  width: 100%;
+  order: 999; /* 常に一番下に配置 */
+}
+
+/* 画像を確実に出すための指定 */
+#detail-img-box img {
+  width: 250px;
+  height: auto;
+  display: block !important;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+
+.record-card {
+  position: relative;
+  overflow: visible;
+}
+
+.record-card.is-open {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  padding: 30px 30px 30px 0;
+}
+
+.record-card.is-open .record-thumb {
+  transform: translateX(-220px);
+  width: 180px;
+  border: 1px solid rgba(46,204,113,.3);
+}
+
+.record-detail {
+  font-size: 14px;
+  line-height: 2;
+}
+.record-card.is-open .record-info {
+  grid-column: 2;
+}
+
+.record-card.is-open .record-detail {
+  grid-column: 2;
+}
+
+
+
+
+.record-card.is-open {
+  overflow: visible !important;
+}
+
+.record-card.is-open .record-thumb {
+  overflow: visible !important;
+  background: red;
+}
+
+
+/* アカウントセクション全体 */
+.account-section {
+  margin-top: 60px;
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 20px;
+  border-left: 1px solid #eee;
+}
+
+/* 各アイテムのスタイル */
+.account-item {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid transparent;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* ホバー演出：ソーダ色の発光と金継ぎの強調 */
+.account-item:hover {
+  background: white;
+  border-color: var(--soda-main);
+  border-left: 4px solid var(--gold-kintsugi); /* 左端に金継ぎのライン */
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.05);
+}
+
+.account-meta {
+  font-size: 9px;
+  color: var(--soda-accent);
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.account-name {
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.account-desc {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 0.02em;
+}
+
+/* ホバー時に説明文の色を少し濃くする */
+.account-item:hover .account-desc {
+  color: #666;
+}
+
+/* プロフィール全体 */
+.medical-chart {
+  border: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 左上の装飾（カルテを留めるクリップ風） */
+.medical-chart::before {
+  content: "CHART NO: 1110";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--gold-kintsugi);
+  color: white;
+  font-size: 8px;
+  padding: 4px 10px;
+  letter-spacing: 0.1em;
+}
+
+.chart-row {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 0;
+}
+
+.chart-label {
+  width: 120px;
+  font-size: 10px;
+  color: var(--soda-accent);
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding-top: 4px;
+}
+
+.chart-value {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.chart-notes {
+  margin-top: 30px;
+}
+
+.chart-notes p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #666;
+  background: repeating-linear-gradient(
+  ); /* ノートの罫線風 */
+}
+/* --- 150%スケール調整 --- */
+.medical-chart {
+  padding: 40px;
+  font-size: 1.1rem; /* 全体的に読みやすく */
+}
+
+.chart-label {
+  width: 180px;
+  font-size: 14px;
+  color: var(--soda-accent);
+}
+
+.chart-value {
+  line-height: 1.8;
+}
+
+/* --- ワンクッション（details）のデザイン --- */
+.chart-warning {
+  margin-top: 30px;
+  border: 1px dashed var(--gold-kintsugi); /* 金継ぎ色の破線 */
+  background: rgba(195, 165, 81, 0.05); /* ほんのりゴールド背景 */
+}
+
+.warning-title {
+  padding: 15px 20px;
+  cursor: pointer;
+  list-style: none; /* デフォルトの三角形を消す */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--gold-kintsugi);
+}
+
+/* ブラウザ標準の三角形を消す用（Safariなど） */
+.warning-title::-webkit-details-marker {
+  display: none;
+}
+
+.open-guide {
+  font-size: 10px;
+  opacity: 0.6;
+  border: 1px solid var(--gold-kintsugi);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.warning-content {
+  padding: 20px;
+  border-top: 1px dashed var(--gold-kintsugi);
+  font-size: 0.95rem;
+  line-height: 2;
+  color: #777;
+}
+
+/* 開いたときのちょっとしたアニメーション（任意） */
+details[open] .warning-content {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* アーカイブ用ナビ */
+.archive-nav {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  margin-bottom: 40px;
+  color: var(--gold-kintsugi);
+}
+
+.archive-nav a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.archive-nav a:hover {
+  color: var(--soda-accent);
+  text-shadow: 0 0 8px var(--soda-main);
+}
+
+/* カテゴリごとのセクション */
+.archive-section {
+  margin-bottom: 80px;
+}
+
+.archive-section h3 {
+  font-size: 12px;
+  color: var(--gold-kintsugi);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 0.3em;
+}
+
+/* 作品タイル */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列並び */
+  gap: 15px;
+}
+
+.archive-item {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-left: 2px solid #eee;
+  transition: 0.3s;
+}
+
+.archive-item:hover {
+  background: white;
+  border-left: 2px solid var(--soda-accent);
+  transform: translateX(5px);
+}
+
+/* 特に好きな作品へのハイライト */
+.highlight-item {
+  border-left: 2px solid var(--gold-kintsugi);
+  background: rgba(195, 165, 81, 0.05);
+}
+
+.item-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item-status {
+  font-size: 11px;
+  color: #999;
+}
